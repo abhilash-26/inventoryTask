@@ -1,6 +1,8 @@
 const LocalStatergey = require("passport-local").Strategy;
 const GoogleStatergey = require("passport-google-oauth2");
 const User = require("../api/models/user.model");
+const passport = require('passport');
+
 
 exports.initializePassport = (passport) => {
   passport.use(
@@ -27,17 +29,17 @@ exports.initializePassport = (passport) => {
     }
   });
 
-  passport.use(
+  passport.use("google",
     new GoogleStatergey(
       {
         clientID:
-          "929146067407-7825ohjm0pcbd8gm1fg7clk5cnkkoi6r.apps.googleusercontent.com",
-        clientSecret: "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",
-        callbackURL: "http://localhost:3000/google/callback",
+          "605245768352-ei0kcpeb45or0c56s495puj0tpnpa9dj.apps.googleusercontent.com",
+        clientSecret: "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",
+        callbackURL: "http://localhost:8080/api/v1/oauth/google/redirect",
         passReqToCallback: true,
       },
       function (request, accessToken, refreshToken, profile, done) {
-        console.log(profile);
+        console.log(accessToken);
         return done(null, profile);
 
         // User.findOrCreate({ googleId: profile.id }, function (err, user) {

@@ -18,6 +18,10 @@ const product = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    hij: {
+      type: Number,
+      required: true,
+    },
   },
   { timestamps: true }
 );
